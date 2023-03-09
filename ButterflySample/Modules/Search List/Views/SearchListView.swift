@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PurchaseListView: UIViewController {
+class SearchListView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,4 +17,4 @@ class PurchaseListView: UIViewController {
 
 // MARK: - Conforming to Storyboarding
 
-extension PurchaseListView: Storyboarding {}
+extension SearchListView: Storyboarding {}

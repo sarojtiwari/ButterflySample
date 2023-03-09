@@ -9,7 +9,7 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     func start() {
-        let controller = PurchaseListView.instantiate()
+        let controller = SearchListView.instantiate()
         self.navigationController.pushViewController(controller, animated: false)
     }
     

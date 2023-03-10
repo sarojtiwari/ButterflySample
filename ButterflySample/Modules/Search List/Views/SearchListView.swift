@@ -111,7 +111,7 @@ extension SearchListView: UITableViewDataSource {
 // MARK: - Search Bar Delegate
 extension SearchListView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count > 1 {
+        if searchText.count > 0 {
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             self.lastQueried = searchText.replacingOccurrences(of: " ", with: "+")

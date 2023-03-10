@@ -31,4 +31,9 @@ class SearchListTableViewCell: UITableViewCell {
         return UINib(nibName: "SearchListTableViewCell", bundle: nil)
     }
     
+    func setupData(title: String, releaseDate: String, image: String?) {
+        self.titleLabel.text = title
+        self.releaseDateLabel.text = releaseDate
+    }
+    
 }

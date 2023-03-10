@@ -14,7 +14,7 @@ enum Endpoints{
     var path: String {
         switch self{
         case .getMovieList(let query):
-            return "search/movie?api_key=\(Constants.apiKey)&query=\(returnEnocded(value: query) ?? query)"
+            return "search/movie?api_key=\(Constants.apiKey)&query=\(query)"
         }
     }
     
@@ -41,11 +41,7 @@ enum Endpoints{
             return nil
         }
     }
-    
-    private func returnEnocded(value: String) -> String? {
-        return value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-    }
-    
+
     // MARK: - Provides the request
     func request() -> URLRequest {
         let url = URL(string: Constants.baseURL+path)!

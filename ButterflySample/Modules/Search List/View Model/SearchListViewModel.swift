@@ -23,12 +23,16 @@ class SearchListViewModel: SearchListViewModelProtocol {
             guard let self = self else {
                 return
             }
-            self.viewType?.gotList(list.results)
+            DispatchQueue.main.async {
+                self.viewType?.gotList(list.results)
+            }
         } error: { [weak self] (error) in
             guard let self = self else {
                 return
             }
-            self.viewType?.gotError(error.localizedDescription)
+            DispatchQueue.main.async {
+                self.viewType?.gotError(error.localizedDescription)
+            }
         }
     }
     

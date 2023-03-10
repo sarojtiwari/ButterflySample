@@ -15,7 +15,7 @@ class SearchListView: UIViewController {
     
     // MARK: - Variables
     var viewModel: SearchListViewModelProtocol?
-    var movieList: SearchListModel? {
+    var movieList: [SearchListModel]? {
         didSet {
             self.tableView.reloadData()
         }
@@ -49,11 +49,15 @@ extension SearchListView: UITableViewDelegate {
 extension SearchListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return movieList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchListTableViewCell.returnReuse(), for: indexPath) as? SearchListTableViewCell
+        guard let currentData = self.movieList?[indexPath.row] else {
+            return cell ?? UITableViewCell()
+        }
+        cell?.setupData(title: currentData.title, releaseDate:currentData.releaseDate, image: currentData.posterPath)
         return cell ?? UITableViewCell()
         
     }
@@ -72,7 +76,7 @@ extension SearchListView: UISearchBarDelegate {
 // MARK: - View Protocol
 extension SearchListView: SearchListViewProtocol {
     func gotList(_ list: [SearchListModel]) {
-        debugPrint("This is the list \(list)")
+        self.movieList = list
     }
     
     func gotError(_ error: String) {

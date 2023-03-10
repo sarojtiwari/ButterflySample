@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B816CE7429BAE1490018E40E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B816CE7329BAE1490018E40E /* ImageDownloader.swift */; };
 		B84104DC29B96836006A8BA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84104DB29B96836006A8BA3 /* AppDelegate.swift */; };
 		B84104E529B96837006A8BA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B84104E429B96837006A8BA3 /* Assets.xcassets */; };
 		B84104E829B96837006A8BA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84104E629B96837006A8BA3 /* LaunchScreen.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B816CE7329BAE1490018E40E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		B84104D829B96836006A8BA3 /* ButterflySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterflySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84104DB29B96836006A8BA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84104E429B96837006A8BA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B816CE7229BADEAE0018E40E /* Search List Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B841053B29BAA5AD006A8BA3 /* SearchListTableViewCell.swift */,
+				B841053C29BAA5AD006A8BA3 /* SearchListTableViewCell.xib */,
+			);
+			path = "Search List Table View Cell";
+			sourceTree = "<group>";
+		};
 		B84104CF29B96836006A8BA3 = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +185,9 @@
 		B841051329B96A61006A8BA3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B816CE7229BADEAE0018E40E /* Search List Table View Cell */,
 				B841051729B96A8B006A8BA3 /* SearchListView.storyboard */,
 				B841051929B96A9D006A8BA3 /* SearchListView.swift */,
-				B841053B29BAA5AD006A8BA3 /* SearchListTableViewCell.swift */,
-				B841053C29BAA5AD006A8BA3 /* SearchListTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +234,7 @@
 				B841052829B97702006A8BA3 /* HTTPClient.swift */,
 				B841052A29B978D3006A8BA3 /* NetworkError.swift */,
 				B841052C29B97A55006A8BA3 /* NetworkManager.swift */,
+				B816CE7329BAE1490018E40E /* ImageDownloader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -360,6 +371,7 @@
 				B841053129BA9CAD006A8BA3 /* SearchListViewModelProtocol.swift in Sources */,
 				B841052729B97491006A8BA3 /* Log.swift in Sources */,
 				B841051129B969EB006A8BA3 /* MainCoordinator.swift in Sources */,
+				B816CE7429BAE1490018E40E /* ImageDownloader.swift in Sources */,
 				B841053729BA9CFB006A8BA3 /* SearchListService.swift in Sources */,
 				B841052D29B97A55006A8BA3 /* NetworkManager.swift in Sources */,
 				B841051D29B96BB8006A8BA3 /* UIStoryboardExtension.swift in Sources */,

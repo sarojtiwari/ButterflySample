@@ -41,7 +41,7 @@ class SearchListView: UIViewController {
 // MARK: - TableView Delegate
 extension SearchListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return UITableView.automaticDimension
     }
 }
 
@@ -57,7 +57,12 @@ extension SearchListView: UITableViewDataSource {
         guard let currentData = self.movieList?[indexPath.row] else {
             return cell ?? UITableViewCell()
         }
-        cell?.setupData(title: currentData.title, releaseDate:currentData.releaseDate, image: currentData.posterPath)
+        self.viewModel?.getImage(image: currentData.posterPath ?? "", completion: { data in
+            cell?.completionWithData?(data)
+        }, failure: { error in
+            cell?.completionWithError?()
+        })
+        cell?.setupData(title: currentData.title, releaseDate:currentData.releaseDate)
         return cell ?? UITableViewCell()
         
     }
@@ -67,7 +72,9 @@ extension SearchListView: UITableViewDataSource {
 extension SearchListView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 1 {
-            viewModel?.getList(query: searchText)
+            viewModel?.getList(query: searchText.replacingOccurrences(of: " ", with: ""))
+        } else {
+            self.movieList = nil
         }
     }
 }

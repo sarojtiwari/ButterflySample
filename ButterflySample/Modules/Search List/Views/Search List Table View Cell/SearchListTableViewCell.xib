@@ -27,7 +27,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8f9-dg-wHl">
                         <rect key="frame" x="76" y="13.666666666666664" width="320" height="43"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyG-as-CxM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyG-as-CxM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -41,9 +41,14 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="loA-Rv-Ly5">
+                        <rect key="frame" x="25" y="25" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="86z-v3-dGu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6oH-wQ-vCl"/>
+                    <constraint firstItem="loA-Rv-Ly5" firstAttribute="centerY" secondItem="86z-v3-dGu" secondAttribute="centerY" id="CxV-z2-ZIs"/>
+                    <constraint firstItem="loA-Rv-Ly5" firstAttribute="centerX" secondItem="86z-v3-dGu" secondAttribute="centerX" id="Ec3-ye-eml"/>
                     <constraint firstItem="8f9-dg-wHl" firstAttribute="centerY" secondItem="86z-v3-dGu" secondAttribute="centerY" id="ia0-1m-lng"/>
                     <constraint firstAttribute="bottom" secondItem="86z-v3-dGu" secondAttribute="bottom" constant="10" id="mLh-Os-0jg"/>
                     <constraint firstAttribute="trailing" secondItem="8f9-dg-wHl" secondAttribute="trailing" constant="16" id="mfP-7o-j9G"/>
@@ -53,6 +58,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicator" destination="loA-Rv-Ly5" id="vDN-7h-ett"/>
                 <outlet property="posterImageView" destination="86z-v3-dGu" id="UEx-m0-Fei"/>
                 <outlet property="releaseDateLabel" destination="Oud-OH-9ij" id="5Lg-cr-uh4"/>
                 <outlet property="titleLabel" destination="pyG-as-CxM" id="9W8-D4-x1a"/>

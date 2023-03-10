@@ -13,10 +13,31 @@ class SearchListTableViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            activityIndicator.startAnimating()
+        }
+    }
+    // MARK: - Variables
+    var completionWithData: ((Data) -> Void )?
+    var completionWithError: (() -> Void)?
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
+        completionWithData = { [weak self] (data) in
+            self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.isHidden = true
+            self?.posterImageView.image = UIImage(data: data)
+            if self?.posterImageView.image == nil {
+                self?.posterImageView.image = UIImage(named: "placeholder")
+            }
+        }
+        completionWithError = {
+            self.activityIndicator.isHidden = true
+            self.posterImageView.image = UIImage(named: "placeholder")
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,7 +52,7 @@ class SearchListTableViewCell: UITableViewCell {
         return UINib(nibName: "SearchListTableViewCell", bundle: nil)
     }
     
-    func setupData(title: String, releaseDate: String, image: String?) {
+    func setupData(title: String, releaseDate: String) {
         self.titleLabel.text = title
         self.releaseDateLabel.text = releaseDate
     }

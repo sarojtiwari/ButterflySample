@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SearchListServiceProtocol {
+protocol SearchListServiceProtocol:ImageDownlader {
     func getMovieList(query: String,
                       completion: @escaping(SearchListDataModel) -> Void,
                       error: @escaping(Error) -> Void)

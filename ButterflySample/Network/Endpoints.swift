@@ -14,7 +14,7 @@ enum Endpoints{
     var path: String {
         switch self{
         case .getMovieList(let query):
-            return "search/movie?api_key=\(Constants.apiKey)&query=\(query)"
+            return "/search/movie?api_key=\(Constants.apiKey)&query=\(query)"
         }
     }
     
@@ -44,7 +44,7 @@ enum Endpoints{
 
     // MARK: - Provides the request
     func request() -> URLRequest {
-        let url = URL(string: Constants.baseURL+path)!
+        let url = URL(string: Constants.baseURL + path)!
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         if method == .post || method == .put {

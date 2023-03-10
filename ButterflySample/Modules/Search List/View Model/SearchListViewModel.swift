@@ -8,7 +8,6 @@
 import Foundation
 
 class SearchListViewModel: SearchListViewModelProtocol {
-    
     // MARK: - Variables
     var service: SearchListServiceProtocol
     var viewType: SearchListViewProtocol?
@@ -36,5 +35,21 @@ class SearchListViewModel: SearchListViewModelProtocol {
         }
     }
     
+    func getImage(image: String,
+                  completion: @escaping(Data) -> Void,
+                  failure: @escaping(Error) -> ()) {
+        guard let imageUrl = URL(string: Constants.imageURL + image) else {
+            return
+        }
+        service.downloadImage(url: imageUrl) { data in
+            DispatchQueue.main.async {
+                completion(data)
+            }
+        } failure: { error in
+            DispatchQueue.main.async {
+                failure(error)
+            }
+        }
+    }
     
 }

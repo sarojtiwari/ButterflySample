@@ -23,6 +23,6 @@ class MainCoordinator: Coordinator {
     
     init(_ withNavigationController: UINavigationController) {
         self.navigationController = withNavigationController
-        navigationController.title = "IMDB"
+        self.navigationController.navigationBar.prefersLargeTitles = true
     }
 }

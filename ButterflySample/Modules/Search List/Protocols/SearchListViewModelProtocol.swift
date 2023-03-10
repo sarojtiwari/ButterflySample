@@ -9,4 +9,7 @@ import Foundation
 
 protocol SearchListViewModelProtocol {
     func getList(query: String)
+    func getImage(image: String,
+                  completion: @escaping(Data) -> Void,
+                  failure: @escaping(Error) -> ())
 }

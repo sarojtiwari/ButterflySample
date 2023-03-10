@@ -17,11 +17,11 @@
 
     - Note: For M1 Mac - The build should be excluded for arm64 on (Any iOS Simulator SDK) and build only active architecture should be set to true.
     
-##Screenshot
+## Screenshot
+
+![Simulator Screen Shot - iPhone 11 - 2023-03-11 at 10 07 55](https://user-images.githubusercontent.com/25385776/224445012-98497182-8224-4921-9e03-829525ebbad9.png)
 ![Simulator Screen Shot - iPhone 11 - 2023-03-11 at 10 07 33](https://user-images.githubusercontent.com/25385776/224444989-37837d9d-4e2a-49d4-8bb1-b8d869850ff8.png)
 ![Simulator Screen Shot - iPhone 11 - 2023-03-11 at 10 07 43](https://user-images.githubusercontent.com/25385776/224445004-0214e449-42eb-4b82-822e-0c038552284c.png)
-![Simulator Screen Shot - iPhone 11 - 2023-03-11 at 10 07 55](https://user-images.githubusercontent.com/25385776/224445012-98497182-8224-4921-9e03-829525ebbad9.png)
-
 
 
 ## Codebase

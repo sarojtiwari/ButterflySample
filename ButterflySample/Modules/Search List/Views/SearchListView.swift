@@ -20,6 +20,7 @@ class SearchListView: UIViewController {
             self.tableView.reloadData()
         }
     }
+    var coordinator: MainCoordinator?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -27,6 +28,16 @@ class SearchListView: UIViewController {
         setupTableView()
         self.title = "Search For Movies"
         self.searchBar.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "Search For Movies"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.title = ""
     }
     
     private func setupTableView() {
@@ -64,7 +75,13 @@ extension SearchListView: UITableViewDataSource {
         })
         cell?.setupData(title: currentData.title, releaseDate:currentData.releaseDate)
         return cell ?? UITableViewCell()
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let currentData = self.movieList?[indexPath.row] else {
+            return
+        }
+        self.coordinator?.gotoMovieList(currentData)
     }
 }
 

@@ -18,6 +18,7 @@ class SearchListTableViewCell: UITableViewCell {
             activityIndicator.startAnimating()
         }
     }
+    @IBOutlet weak var likeButton: UIButton!
     // MARK: - Variables
     var completionWithData: ((Data) -> Void )?
     var completionWithError: (() -> Void)?
@@ -52,6 +53,10 @@ class SearchListTableViewCell: UITableViewCell {
         return UINib(nibName: "SearchListTableViewCell", bundle: nil)
     }
     
+    @IBAction func likeButtonPressed(_ sender: Any) {
+        let image = self.likeButton.imageView?.image == UIImage(systemName: "heart") ? "heart.fill" : "heart"
+        self.likeButton.setImage(UIImage(systemName: image), for: .normal)
+    }
     func setupData(title: String, releaseDate: String) {
         self.titleLabel.text = title
         self.releaseDateLabel.text = releaseDate

@@ -25,6 +25,7 @@ class DetailView: UIViewController {
             activityIndicator.startAnimating()
         }
     }
+    @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class DetailView: UIViewController {
         self.dateLabel.text = data.releaseDate
         self.voteCountLabel.text = String(data.voteCount)
         self.overviewLabel.text = data.overview
+        self.originalTitleLabel.text = data.originalTitle
         self.title = data.title
         viewModel?.getImage(data.posterPath ?? "")
     }

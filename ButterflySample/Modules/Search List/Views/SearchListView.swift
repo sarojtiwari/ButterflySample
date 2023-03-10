@@ -83,6 +83,10 @@ extension SearchListView: UITableViewDataSource {
         }
         self.coordinator?.gotoMovieList(currentData)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.searchBar.resignFirstResponder()
+    }
 }
 
 // MARK: - Search Bar Delegate
@@ -90,9 +94,17 @@ extension SearchListView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 1 {
             viewModel?.getList(query: searchText.replacingOccurrences(of: " ", with: ""))
-        } else {
+        } else if searchText.count == 0 {
             self.movieList = nil
         }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
     }
 }
 

@@ -20,7 +20,8 @@ extension HTTPClient {
     func sendRequest<T:Decodable>(endpoint: Endpoints,
                                   responseModel: T.Type,
                                   completion: @escaping (Result<T, Error>) -> Void) {
-        let urlRequest = endpoint.request()
+        var urlRequest = endpoint.request()
+        urlRequest.cachePolicy = .returnCacheDataElseLoad
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
                 if let error = error {

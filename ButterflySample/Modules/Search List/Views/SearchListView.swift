@@ -73,7 +73,7 @@ extension SearchListView: UITableViewDataSource {
         }, failure: { error in
             cell?.completionWithError?()
         })
-        cell?.setupData(title: currentData.title, releaseDate:currentData.releaseDate)
+        cell?.setupData(title: currentData.title, releaseDate:currentData.releaseDate, id: currentData.id)
         return cell ?? UITableViewCell()
     }
     
@@ -93,7 +93,7 @@ extension SearchListView: UITableViewDataSource {
 extension SearchListView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 1 {
-            viewModel?.getList(query: searchText.replacingOccurrences(of: " ", with: ""))
+            viewModel?.getList(query: searchText.replacingOccurrences(of: " ", with: "+"))
         } else if searchText.count == 0 {
             self.movieList = nil
         }

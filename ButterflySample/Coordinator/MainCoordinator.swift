@@ -10,6 +10,10 @@ import UIKit
 class MainCoordinator: Coordinator {
     func start() {
         let controller = SearchListView.instantiate()
+        let service = SearchListService()
+        let viewModel = SearchListViewModel(service)
+        controller.viewModel = viewModel
+        viewModel.viewType = controller
         self.navigationController.pushViewController(controller, animated: false)
     }
     
@@ -19,6 +23,6 @@ class MainCoordinator: Coordinator {
     
     init(_ withNavigationController: UINavigationController) {
         self.navigationController = withNavigationController
-        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.title = "IMDB"
     }
 }

@@ -16,9 +16,38 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Ak2-ls-1Gp">
+                                <rect key="frame" x="0.0" y="47" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="cVJ-gw-iEy"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="9H1-Fm-hba"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TLF-N0-IFD">
+                                <rect key="frame" x="0.0" y="103" width="375" height="675"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TLF-N0-IFD" secondAttribute="trailing" id="7lO-St-0Pk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="TLF-N0-IFD" secondAttribute="bottom" id="O72-91-YbV"/>
+                            <constraint firstItem="TLF-N0-IFD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Pyb-Ty-YJo"/>
+                            <constraint firstItem="Ak2-ls-1Gp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Y5p-R7-gDE"/>
+                            <constraint firstItem="Ak2-ls-1Gp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aLd-RI-2D4"/>
+                            <constraint firstItem="Ak2-ls-1Gp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hz4-Z6-nr9"/>
+                            <constraint firstItem="TLF-N0-IFD" firstAttribute="top" secondItem="Ak2-ls-1Gp" secondAttribute="bottom" id="pMo-Ws-hy5"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="Ak2-ls-1Gp" id="xz3-hw-657"/>
+                        <outlet property="tableView" destination="TLF-N0-IFD" id="6Q6-H3-ukt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -26,8 +55,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

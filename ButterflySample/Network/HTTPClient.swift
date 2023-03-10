@@ -38,6 +38,7 @@ extension HTTPClient {
                 completion(.success(result))
             } catch let decodingError {
                 Log.error(endpoint.path + decodingError.localizedDescription)
+                debugPrint("This is the decoding error \(decodingError)")
                 completion(.failure(decodingError))
             }
         }.resume()

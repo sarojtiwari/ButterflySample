@@ -8,20 +8,20 @@
 import Foundation
 
 enum Endpoints{
-    case getPurchaseList
+    case getMovieList(query: String)
     
     // MARK: - Provides the path for the request
     var path: String {
         switch self{
-        case .getPurchaseList:
-                return ""
+        case .getMovieList(let query):
+            return "search/movie?api_key=\(Constants.apiKey)&query=\(returnEnocded(value: query) ?? query)"
         }
     }
     
     // MARK: - Provides the method for the request
     var method: RequestMethod {
         switch self {
-        case .getPurchaseList:
+        case .getMovieList:
             return .get
         }
     }
@@ -29,7 +29,7 @@ enum Endpoints{
     // MARK: - Provides the body for the request
     var body: [String: Any]? {
         switch self{
-        case .getPurchaseList:
+        case .getMovieList:
             return nil
         }
     }
@@ -37,14 +37,18 @@ enum Endpoints{
     // MARK: - Provides the header for the request
     var headers: [String: String]? {
         switch self {
-        case .getPurchaseList:
+        case .getMovieList:
             return nil
         }
     }
     
+    private func returnEnocded(value: String) -> String? {
+        return value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    }
+    
     // MARK: - Provides the request
     func request() -> URLRequest {
-        let url = URL(string: path)!
+        let url = URL(string: Constants.baseURL+path)!
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         if method == .post || method == .put {

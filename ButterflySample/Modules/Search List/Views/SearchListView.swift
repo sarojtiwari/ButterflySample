@@ -12,6 +12,11 @@ class SearchListView: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            self.activityIndicator.isHidden = true
+        }
+    }
     
     // MARK: - Variables
     var viewModel: SearchListViewModelProtocol?
@@ -21,6 +26,7 @@ class SearchListView: UIViewController {
         }
     }
     var coordinator: MainCoordinator?
+    var lastQueried = ""
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -87,19 +93,39 @@ extension SearchListView: UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.searchBar.resignFirstResponder()
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let movies = self.movieList else {
+            return
+        }
+        if indexPath.row == movies.count - 1 {
+            if viewModel?.moreDataAvailable ?? false {
+                self.activityIndicator.startAnimating()
+                self.activityIndicator.isHidden = false
+                viewModel?.getList(query: self.lastQueried)
+            }
+        }
+    }
 }
 
 // MARK: - Search Bar Delegate
 extension SearchListView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 1 {
-            viewModel?.getList(query: searchText.replacingOccurrences(of: " ", with: "+"))
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            self.lastQueried = searchText.replacingOccurrences(of: " ", with: "+")
+            self.viewModel?.currentPage = 1
+            self.movieList = nil
+            viewModel?.getList(query: lastQueried)
         } else if searchText.count == 0 {
             self.movieList = nil
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.lastQueried = ""
+        self.viewModel?.currentPage = 1
         self.searchBar.resignFirstResponder()
     }
     
@@ -112,11 +138,21 @@ extension SearchListView: UISearchBarDelegate {
 // MARK: - View Protocol
 extension SearchListView: SearchListViewProtocol {
     func gotList(_ list: [SearchListModel]) {
-        self.movieList = list
+        if self.movieList == nil {
+            self.movieList = list
+        } else {
+            list.forEach({
+                self.movieList?.append($0)
+            })
+        }
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
     }
     
     func gotError(_ error: String) {
-        debugPrint("Error Noted \(error)")
+        self.activityIndicator.stopAnimating()
+        self.showAlert(message: error)
+        self.activityIndicator.isHidden = true
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 struct SearchListDataModel: Decodable {
     let page: Int
     let results: [SearchListModel]
-    let totalPages: Int?
+    let total_pages: Int
 }
 
 struct SearchListModel: Codable {

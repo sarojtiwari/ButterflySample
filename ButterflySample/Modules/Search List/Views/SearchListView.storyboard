@@ -31,6 +31,9 @@
                                 <rect key="frame" x="0.0" y="103" width="375" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="vjd-YW-78W">
+                                <rect key="frame" x="169" y="372" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -40,11 +43,14 @@
                             <constraint firstItem="TLF-N0-IFD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Pyb-Ty-YJo"/>
                             <constraint firstItem="Ak2-ls-1Gp" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Y5p-R7-gDE"/>
                             <constraint firstItem="Ak2-ls-1Gp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aLd-RI-2D4"/>
+                            <constraint firstItem="vjd-YW-78W" firstAttribute="centerY" secondItem="TLF-N0-IFD" secondAttribute="centerY" constant="-50" id="c4K-LW-GxH"/>
                             <constraint firstItem="Ak2-ls-1Gp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hz4-Z6-nr9"/>
                             <constraint firstItem="TLF-N0-IFD" firstAttribute="top" secondItem="Ak2-ls-1Gp" secondAttribute="bottom" id="pMo-Ws-hy5"/>
+                            <constraint firstItem="vjd-YW-78W" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="s1M-vL-YNl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="vjd-YW-78W" id="26l-zB-7aw"/>
                         <outlet property="searchBar" destination="Ak2-ls-1Gp" id="xz3-hw-657"/>
                         <outlet property="tableView" destination="TLF-N0-IFD" id="6Q6-H3-ukt"/>
                     </connections>

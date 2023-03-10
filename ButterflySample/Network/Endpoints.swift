@@ -8,13 +8,13 @@
 import Foundation
 
 enum Endpoints{
-    case getMovieList(query: String)
+    case getMovieList(query: String, page: Int)
     
     // MARK: - Provides the path for the request
     var path: String {
         switch self{
-        case .getMovieList(let query):
-            return "/search/movie?api_key=\(Constants.apiKey)&query=\(query)"
+        case .getMovieList(let query, let page):
+            return "/search/movie?api_key=\(Constants.apiKey)&query=\(query)&page=\(page)"
         }
     }
     

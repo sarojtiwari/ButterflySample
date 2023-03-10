@@ -12,15 +12,22 @@ class SearchListViewModel: SearchListViewModelProtocol {
     var service: SearchListServiceProtocol
     var viewType: SearchListViewProtocol?
     
+    var moreDataAvailable: Bool = false
+    var currentPage = 1 
+    
     // MARK: - Initialization
     init(_ withService: SearchListServiceProtocol) {
         self.service = withService
     }
     
     func getList(query: String) {
-        service.getMovieList(query: query) { [weak self] (list) in
+        service.getMovieList(query: query, page: currentPage) { [weak self] (list) in
             guard let self = self else {
                 return
+            }
+            if list.total_pages != self.currentPage {
+                self.moreDataAvailable = true
+                self.currentPage += 1
             }
             DispatchQueue.main.async {
                 self.viewType?.gotList(list.results)

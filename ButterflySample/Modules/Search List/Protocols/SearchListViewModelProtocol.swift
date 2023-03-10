@@ -12,4 +12,6 @@ protocol SearchListViewModelProtocol {
     func getImage(image: String,
                   completion: @escaping(Data) -> Void,
                   failure: @escaping(Error) -> ())
+    var moreDataAvailable:Bool {get set}
+    var currentPage:Int{get set}
 }

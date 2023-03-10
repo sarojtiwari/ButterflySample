@@ -11,9 +11,8 @@
 1. Just download the repo or clone the repo
 2. Open Terminal and go inside the folder,e.g cd [path to inside the repo folder]
 
-4. Go to the folder,Just open the .xcodeproj
-5. Switch to the enviroment that you want to test [How to guide here](#how-to-switch-environments)
-6. Run the project
+3. Go to the folder,Just open the .xcodeproj
+4. Run the project
 
     - Note: For M1 Mac - The build should be excluded for arm64 on (Any iOS Simulator SDK) and build only active architecture should be set to true.
     
